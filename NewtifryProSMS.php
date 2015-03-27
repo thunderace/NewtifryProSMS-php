@@ -23,9 +23,10 @@ function newtifryProSMS(	$apikey, // unused here
                           $state = 0, 
                           $notify = -1) {
   //Prepare variables
-  $data = array ( "timestamp" => iso8601(),
-                  "priority" => $priority, 
-                  "title" => $title);
+  $data = array ( "type"      => "NPSMS",
+                  "timestamp" => iso8601(),
+                  "priority"  => $priority, 
+                  "title"     => $title);
 
 
   if ($message) {
@@ -61,6 +62,6 @@ function newtifryProSMS(	$apikey, // unused here
   if ($notify == 0 || $notify == 1) {
     $data["notify"] = $notify;
 	}
-  return "NewtifryPro\n".json_encode($data);
+  return json_encode($data);
 }
 ?>
